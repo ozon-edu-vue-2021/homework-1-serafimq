@@ -18,13 +18,13 @@
         <p><strong>Result: {{sum}}</strong></p>
         <div class="math">
             Counter:
-            <button class="button minus" v-on:click="decrementCounterHandler">-1</button>
-            <button class="button plus" v-on:click="incrementCounterHandler">+1</button>
+            <button class="button minus" @click="decrementCounterHandler">-1</button>
+            <button class="button plus" @click="incrementCounterHandler">+1</button>
         </div>
         <div class="math">
             Step:
-            <button class="button minus">-2</button>
-            <button class="button plus">+2</button>
+            <button class="button minus" @click="decrementStepHandler">-2</button>
+            <button class="button plus" @click="incrementStepHandler">+2</button>
         </div>
     </section>
     <hr>
@@ -35,8 +35,8 @@
         <p><strong>Result: <span class="sum"></span></strong></p>
         <div class="math">
             Counter:
-            <button class="button minus">-1</button>
-            <button class="button plus">+1</button>
+            <button class="button minus" @click="decrementCounterHandler">-1</button>
+            <button class="button plus" @click="incrementCounterHandler">+1</button>
         </div>
         <div class="math">
             Step:
@@ -52,12 +52,24 @@
                 step: 2
             },
             methods: {
-                incrementCounterHandler() {},
-                decrementCounterHandler() {}
+                incrementCounterHandler() {
+                  this.counter = this.counter + 1;
+                },
+                incrementStepHandler() {
+                  this.counter = this.counter + this.step;
+                },
+                decrementCounterHandler() {
+                  this.counter = this.counter - 1;
+                },
+                decrementStepHandler() {
+                  this.counter = this.counter - this.step;
+                },
                 //...
             },
             computed: {
-                sum() {}
+                sum() {
+                  return this.counter + 2;
+                }
             }
         })
     </script>
